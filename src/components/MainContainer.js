@@ -1,18 +1,51 @@
+// import React from "react";
+// import StockContainer from "./StockContainer";
+// import PortfolioContainer from "./PortfolioContainer";
+// import SearchBar from "./SearchBar";
+
+// function MainContainer() {
+//   return (
+//     <div>
+//       <SearchBar />
+//       <div className="row">
+//         <div className="col-8">
+//           <StockContainer />
+//         </div>
+//         <div className="col-4">
+//           <PortfolioContainer />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default MainContainer;
+
 import React from "react";
 import StockContainer from "./StockContainer";
 import PortfolioContainer from "./PortfolioContainer";
 import SearchBar from "./SearchBar";
 
-function MainContainer() {
+function MainContainer({
+  stocks,
+  portfolioStocks,
+  onBuyStock,
+  onSellStock,
+  onSortChange,
+  onFilterChange,
+}) {
   return (
     <div>
-      <SearchBar />
+      <SearchBar onSortChange={onSortChange} onFilterChange={onFilterChange} />
       <div className="row">
         <div className="col-8">
-          <StockContainer />
+          <StockContainer stocks={stocks} onBuyStock={onBuyStock} />
         </div>
         <div className="col-4">
-          <PortfolioContainer />
+          <PortfolioContainer
+            portfolioStocks={portfolioStocks}
+            onSellStock={onSellStock}
+          />
         </div>
       </div>
     </div>
